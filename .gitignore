@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.conda/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Model files (large)
+*.pt
+*.pth
+*.onnx
+
+# Output
+2DCS_AI_Output/
+2DCS_Demo_Output*/
+
+# Temp
+tmp/
+*.tmp
+_temp_*
+
+# MATLAB (legacy)
+*.asv
+*.m~
+
+# Misc
+~$*
+*.spec
