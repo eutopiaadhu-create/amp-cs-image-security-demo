@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AMP-CS 多级图像安全传输系统网页端成果展示">
+  <title>AMP-CS 图像安全传输 Web Console</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="site-header" aria-label="页面导航">
+    <a class="brand" href="#top" aria-label="AMP-CS 首页">
+      <span class="brand-mark" aria-hidden="true">CS</span>
+      <span>AMP-CS Web Console</span>
+    </a>
+    <nav class="nav-links" aria-label="主要栏目">
+      <a href="#features">功能</a>
+      <a href="#workflow">流程</a>
+      <a href="#access">权限</a>
+      <a href="#metrics">指标</a>
+    </nav>
+    <a class="header-action" href="https://github.com/eutopiaadhu-create/amp-cs-image-security-demo" target="_blank" rel="noreferrer">
+      GitHub
+    </a>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <img class="hero-image" src="assets/comparison_grid.png" alt="AMP-CS 系统对传统密文、本系统隐写输出、正确密钥恢复和错误密钥恢复的效果对比">
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow">网页端成果展示</p>
+        <h1 id="hero-title">多级图像安全传输 Web Console</h1>
+        <p class="hero-copy">
+          一个面向图像隐私传输场景的可视化工具入口：将压缩感知、隐写载体、AMP-Net 重建和分级访问结果集中展示，
+          让用户不用阅读代码，也能快速理解系统输出、权限差异和实验质量。
+        </p>
+        <div class="hero-actions" aria-label="主要操作">
+          <a class="button button-primary" href="#console">查看控制台</a>
+          <a class="button button-secondary" href="#metrics">查看实验看板</a>
+        </div>
+      </div>
+      <div class="hero-panel" id="console" aria-label="系统状态概览">
+        <div class="panel-head">
+          <span class="status-dot"></span>
+          <span>AMP-CS Online Preview</span>
+        </div>
+        <div class="panel-grid">
+          <div>
+            <small>隐写载体质量</small>
+            <strong>51.15 dB</strong>
+            <span>Carrier PSNR</span>
+          </div>
+          <div>
+            <small>目标图恢复</small>
+            <strong>0.9591</strong>
+            <span>Target SSIM</span>
+          </div>
+          <div>
+            <small>错误密钥恢复</small>
+            <strong>失效</strong>
+            <span>Wrong-key SSIM 0.0027</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="features" aria-labelledby="features-title">
+      <div class="section-inner">
+        <div class="section-intro">
+          <p class="eyebrow">工具能力</p>
+          <h2 id="features-title">网页端负责把算法结果变成可查看、可解释、可汇报的成果</h2>
+          <p>
+            这个页面不是论文摘要，而是项目的可视化入口。它把系统最关键的输出、权限规则和实验指标放在同一个界面里，
+            方便老师、用户或团队成员快速检查项目完成度。
+          </p>
+        </div>
+        <div class="feature-grid" aria-label="网页端能力">
+          <article class="feature-card">
+            <span class="feature-index">01</span>
+            <h3>系统效果总览</h3>
+            <p>首屏直接展示传统密文、本系统隐写输出、正确恢复和错误密钥恢复的差异。</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">02</span>
+            <h3>分级权限预览</h3>
+            <p>用角色切换模拟访客、A 用户、B 用户能看到的不同内容。</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">03</span>
+            <h3>实验指标看板</h3>
+            <p>集中呈现 PSNR、SSIM、错误密钥敏感性和端到端耗时。</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">04</span>
+            <h3>成果入口</h3>
+            <p>网页、代码仓库、桌面 demo 和实验图表形成一个完整展示包。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="workflow" aria-labelledby="workflow-title">
+      <div class="section-inner">
+        <div class="section-intro section-intro-compact">
+          <p class="eyebrow">使用流程</p>
+          <h2 id="workflow-title">网页端呈现用户真正关心的四个结果</h2>
+        </div>
+        <div class="flow-line" aria-label="网页端使用流程">
+          <article class="flow-step">
+            <span>1</span>
+            <h3>查看载体</h3>
+            <p>确认隐写后图像仍保持自然视觉外观。</p>
+          </article>
+          <article class="flow-step">
+            <span>2</span>
+            <h3>切换角色</h3>
+            <p>比较访客、A 用户、B 用户的可见内容。</p>
+          </article>
+          <article class="flow-step">
+            <span>3</span>
+            <h3>检查恢复</h3>
+            <p>查看目标图和源图的 AMP-Net 重建质量。</p>
+          </article>
+          <article class="flow-step">
+            <span>4</span>
+            <h3>读取指标</h3>
+            <p>用 PSNR、SSIM 和耗时判断系统效果。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="access" aria-labelledby="access-title">
+      <div class="section-inner access-layout">
+        <div class="section-intro">
+          <p class="eyebrow">权限控制</p>
+          <h2 id="access-title">同一张载体图，不同用户看到不同层级的信息</h2>
+          <p>
+            角色切换是网页端最直观的交互。它把算法里的权限规则转成用户能理解的界面：
+            没有权限只看载体，部分授权恢复目标图，完整授权恢复源图和目标图。
+          </p>
+        </div>
+        <div class="access-panel" data-role="guest">
+          <div class="segment-control" role="tablist" aria-label="选择权限角色">
+            <button class="segment is-active" type="button" role="tab" aria-selected="true" data-role-button="guest">访客</button>
+            <button class="segment" type="button" role="tab" aria-selected="false" data-role-button="user-a">A 用户</button>
+            <button class="segment" type="button" role="tab" aria-selected="false" data-role-button="user-b">B 用户</button>
+          </div>
+          <div class="role-visual" aria-hidden="true">
+            <div class="role-screen role-carrier">隐写载体</div>
+            <div class="role-screen role-target">目标图</div>
+            <div class="role-screen role-source">源图</div>
+          </div>
+          <div class="role-copy" role="tabpanel" aria-live="polite">
+            <p class="role-label" id="role-label">访客模式</p>
+            <h3 id="role-title">只能查看视觉正常的隐写载体</h3>
+            <p id="role-body">适合公开传输或展示场景。普通观察者看不到明显密文，也无法恢复隐藏图像。</p>
+            <dl class="role-points">
+              <div>
+                <dt>可见内容</dt>
+                <dd id="role-scope">隐写后载体图</dd>
+              </div>
+              <div>
+                <dt>工具价值</dt>
+                <dd id="role-value">隐藏信息存在性，降低暴露感</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-paper" id="metrics" aria-labelledby="metrics-title">
+      <div class="section-inner">
+        <div class="results-grid">
+          <div class="section-intro">
+            <p class="eyebrow">实验看板</p>
+            <h2 id="metrics-title">把系统效果量化成一组可复核指标</h2>
+            <p>
+              网页端保留核心实验数据，帮助用户快速判断：恢复质量是否足够清晰、载体是否足够自然、错误密钥是否无法恢复。
+            </p>
+          </div>
+          <figure class="result-figure">
+            <img src="assets/comparison_grid.png" alt="AMP-CS 效果对比图">
+            <figcaption>系统输出对比：载体、传统密文、正确恢复、错误密钥恢复</figcaption>
+          </figure>
+        </div>
+
+        <div class="metric-grid" aria-label="实验指标">
+          <article class="metric-card">
+            <p>目标图重建</p>
+            <strong>36.22 dB</strong>
+            <span>SSIM 0.9591</span>
+          </article>
+          <article class="metric-card">
+            <p>源图重建</p>
+            <strong>34.62 dB</strong>
+            <span>SSIM 0.9459</span>
+          </article>
+          <article class="metric-card">
+            <p>隐写载体</p>
+            <strong>51.15 dB</strong>
+            <span>SSIM 0.9985</span>
+          </article>
+          <article class="metric-card">
+            <p>错误密钥</p>
+            <strong>5.61 dB</strong>
+            <span>SSIM 0.0027</span>
+          </article>
+          <article class="metric-card">
+            <p>端到端耗时</p>
+            <strong>6.92s</strong>
+            <span>加密 4.30s</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" aria-labelledby="modules-title">
+      <div class="section-inner">
+        <div class="section-intro">
+          <p class="eyebrow">成果组成</p>
+          <h2 id="modules-title">网页端、桌面端和算法代码共同构成完整项目成果</h2>
+        </div>
+        <div class="module-grid">
+          <article class="module-card">
+            <h3>Web Console</h3>
+            <p>用于在线查看项目效果、权限差异和实验指标，是最方便的成果展示入口。</p>
+          </article>
+          <article class="module-card">
+            <h3>Desktop Demo</h3>
+            <p>本地桌面程序负责图像选择、加密隐写、AMP 重建和权限结果生成。</p>
+          </article>
+          <article class="module-card">
+            <h3>Algorithm Core</h3>
+            <p>核心代码包含压缩测量、矩阵加密、索引置乱、DCT 隐写和重建流程。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark repo-section" aria-labelledby="repo-title">
+      <div class="section-inner repo-layout">
+        <div>
+          <p class="eyebrow">项目入口</p>
+          <h2 id="repo-title">网页端可以作为成果首页，GitHub 仓库作为代码复核入口</h2>
+          <p>
+            公开仓库保留核心代码、实验脚本、网页端和展示图。模型权重、完整输出和结项书留在本地，
+            让公开页面更轻量，也更适合老师快速浏览。
+          </p>
+        </div>
+        <a class="button button-primary" href="https://github.com/eutopiaadhu-create/amp-cs-image-security-demo" target="_blank" rel="noreferrer">
+          打开 GitHub 仓库
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>AMP-CS Web Console</span>
+    <span>多级图像安全传输系统成果页</span>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>
