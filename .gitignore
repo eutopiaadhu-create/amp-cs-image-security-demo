@@ -48,6 +48,7 @@ encrypted_output.png
 
 # Temp
 tmp/
+tmp_ppt/
 *.tmp
 _temp_*
 ~$*
