@@ -774,6 +774,51 @@ a {
   border-top: 1px solid var(--line);
 }
 
+.baseline-figure {
+  margin-top: 36px;
+}
+
+.baseline-table-wrap {
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.baseline-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+}
+
+.baseline-table th,
+.baseline-table td {
+  padding: 15px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.baseline-table th {
+  color: var(--ink);
+  background: #f8faf7;
+  font-weight: 900;
+}
+
+.baseline-table td:nth-child(3),
+.baseline-table td:nth-child(4) {
+  white-space: nowrap;
+  font-weight: 900;
+  color: var(--teal-dark);
+}
+
+.baseline-table tr:last-child td {
+  border-bottom: 0;
+}
+
 .metric-grid {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }

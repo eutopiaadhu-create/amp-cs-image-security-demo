@@ -20,6 +20,8 @@
       <a href="#workflow">流程</a>
       <a href="#access">权限</a>
       <a href="#metrics">指标</a>
+      <a href="#baseline">对比</a>
+      <a href="#reconstruction">重建</a>
     </nav>
     <a class="header-action" href="https://github.com/eutopiaadhu-create/amp-cs-image-security-demo" target="_blank" rel="noreferrer">
       GitHub
@@ -61,7 +63,7 @@
           <div>
             <small>错误密钥恢复</small>
             <strong>失效</strong>
-            <span>Wrong-key SSIM 0.0027</span>
+            <span>Wrong-key PSNR 5.62 dB</span>
           </div>
         </div>
       </div>
@@ -298,7 +300,7 @@
           </article>
           <article class="metric-card">
             <p>错误密钥</p>
-            <strong>5.61 dB</strong>
+            <strong>5.62 dB</strong>
             <span>SSIM 0.0027</span>
           </article>
           <article class="metric-card">
@@ -306,6 +308,131 @@
             <strong>6.92s</strong>
             <span>加密 4.30s</span>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="baseline" aria-labelledby="baseline-title">
+      <div class="section-inner">
+        <div class="section-intro">
+          <p class="eyebrow">Baseline Comparison</p>
+          <h2 id="baseline-title">同一组图片下，对比传统密文外观、经典 LSB 隐写和本系统</h2>
+          <p>
+            对比脚本使用 3 张目标图、同一张原始载体和同一张系统隐写载体计算平均指标。传统密文行只用于说明密文外观，
+            不比较 AES 等标准算法的密码强度；LSB 行作为经典单图隐写基线，用来说明载体不可感知性和容量/权限能力差异。
+          </p>
+        </div>
+
+        <figure class="result-figure baseline-figure">
+          <img src="assets/baseline_comparison_grid.png" alt="传统密文外观、LSB 隐写、本系统输出和错误密钥恢复的 baseline 对比图">
+          <figcaption>输入图片：04_target_image_1-3、10_carrier_original、11_carrier_steganographic、recovered_B_target_1-3、wrong_key_target_1-3</figcaption>
+        </figure>
+
+        <div class="baseline-table-wrap" role="region" aria-label="baseline 指标对比表">
+          <table class="baseline-table">
+            <thead>
+              <tr>
+                <th>方法</th>
+                <th>参考依据</th>
+                <th>载体 PSNR / SSIM</th>
+                <th>恢复 PSNR / SSIM</th>
+                <th>说明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Noise-cipher baseline</td>
+                <td>NIST FIPS 197, AES</td>
+                <td>-</td>
+                <td>8.48 / 0.0079</td>
+                <td>噪声密文外观明显，适合作为“可见密文”对照。</td>
+              </tr>
+              <tr>
+                <td>LSB steganography baseline</td>
+                <td>Chan & Cheng, 2004</td>
+                <td>62.40 / 0.9997</td>
+                <td>-</td>
+                <td>载体扰动极小；该行只作为普通隐写不可感知性对照。</td>
+              </tr>
+              <tr>
+                <td>AMP-CS system</td>
+                <td>Candes et al., 2006; Donoho, 2006</td>
+                <td>51.15 / 0.9985</td>
+                <td>36.22 / 0.9591</td>
+                <td>保持载体自然外观，同时支持授权恢复多张目标图。</td>
+              </tr>
+              <tr>
+                <td>Wrong-key ablation</td>
+                <td>本项目消融实验</td>
+                <td>-</td>
+                <td>5.62 / 0.0027</td>
+                <td>错误置乱索引下恢复失败，说明密钥/索引敏感。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-paper" id="reconstruction" aria-labelledby="reconstruction-title">
+      <div class="section-inner">
+        <div class="section-intro">
+          <p class="eyebrow">Reconstruction Baselines</p>
+          <h2 id="reconstruction-title">同条件对比 SPL、OMP 与 AMP-Net 的重建质量和时间</h2>
+          <p>
+            三种方法使用同一批 3 张目标图、同一个 60% 采样矩阵和 33 x 33 分块。该对比用于说明：
+            项目采用 AMP-Net 不是只为了提高画质，也为了替代传统迭代重建在交互演示中的时间开销。
+          </p>
+        </div>
+
+        <figure class="result-figure baseline-figure">
+          <img src="assets/reconstruction_comparison_grid.png" alt="SPL、OMP 和 AMP-Net 在三张目标图上的重建效果对比">
+          <figcaption>同条件重建对比：SPL-style、OMP-DCT 和本项目 AMP-Net 输出</figcaption>
+        </figure>
+
+        <div class="baseline-table-wrap" role="region" aria-label="重建算法指标对比表">
+          <table class="baseline-table">
+            <thead>
+              <tr>
+                <th>重建方法</th>
+                <th>实验条件</th>
+                <th>总时间</th>
+                <th>平均时间/图</th>
+                <th>PSNR</th>
+                <th>SSIM</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SPL-style</td>
+                <td>80 次迭代，DCT 阈值约束</td>
+                <td>1.80s</td>
+                <td>0.60s</td>
+                <td>22.09</td>
+                <td>0.4889</td>
+                <td>速度尚可，但恢复噪声明显。</td>
+              </tr>
+              <tr>
+                <td>OMP-DCT</td>
+                <td>每块最多 60 个 DCT 原子</td>
+                <td>44.94s</td>
+                <td>14.98s</td>
+                <td>28.17</td>
+                <td>0.7830</td>
+                <td>质量优于 SPL-style，但耗时较高。</td>
+              </tr>
+              <tr>
+                <td>AMP-Net</td>
+                <td>本项目模型输出，9 个 phase</td>
+                <td>1.49s</td>
+                <td>0.50s</td>
+                <td>36.22</td>
+                <td>0.9591</td>
+                <td>质量和速度综合表现最好。</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
