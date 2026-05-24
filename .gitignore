@@ -7,11 +7,14 @@ __pycache__/
 dist/
 build/
 *.egg
+.pytest_cache/
+.mypy_cache/
 
 # Virtual environments
 venv/
 env/
 .conda/
+.venv/
 
 # IDE
 .vscode/
@@ -28,20 +31,39 @@ Desktop.ini
 *.pt
 *.pth
 *.onnx
+*.pkl
+models/
 
-# Output
+# Data, generated artifacts, and local reports
+dataset/
+net/dataset/
+results/
+output/
 2DCS_AI_Output/
 2DCS_Demo_Output*/
+encrypted_output.png
+*.mat
+*.docx
+*.pdf
 
 # Temp
 tmp/
 *.tmp
 _temp_*
+~$*
 
 # MATLAB (legacy)
 *.asv
 *.m~
 
+# Local report generation helpers
+tools/build_revised_report.py
+
+# Legacy research variants kept locally; main demo uses net/train_AMP_Net.py
+net/train_AMP_Net_B*.py
+net/train_AMP_Net_M.py
+net/test_AMP_Net_B*.py
+net/test_AMP_Net_M.py
+
 # Misc
-~$*
 *.spec

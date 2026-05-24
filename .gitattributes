@@ -1,0 +1,19 @@
+* text=auto
+
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.csv text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.bmp binary
+*.gif binary
+
+*.pt binary
+*.pth binary
+*.pkl binary
+*.mat binary
+*.docx binary
+*.pdf binary
