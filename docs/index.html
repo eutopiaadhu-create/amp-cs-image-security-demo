@@ -38,7 +38,7 @@
           让用户不用阅读代码，也能快速理解系统输出、权限差异和实验质量。
         </p>
         <div class="hero-actions" aria-label="主要操作">
-          <a class="button button-primary" href="#console">查看控制台</a>
+          <a class="button button-primary" href="#tool">生成加密包</a>
           <a class="button button-secondary" href="#metrics">查看实验看板</a>
         </div>
       </div>
@@ -63,6 +63,97 @@
             <strong>失效</strong>
             <span>Wrong-key SSIM 0.0027</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tool" id="tool" aria-labelledby="tool-title">
+      <div class="section-inner">
+        <div class="section-intro">
+          <p class="eyebrow">Web Console</p>
+          <h2 id="tool-title">浏览器端生成加密包，并支持后续按角色解密预览</h2>
+          <p>
+            选择源图、目标图和载体图后，网页端会生成一个 `.ampcs.json` 加密结构。访客可查看载体缩略图，
+            A 用户用 A 密钥恢复目标图，B 用户用 B 密钥恢复源图和目标图。
+          </p>
+        </div>
+
+        <div class="tool-shell">
+          <section class="tool-card" aria-labelledby="encrypt-title">
+            <div class="tool-card-head">
+              <span class="tool-step">01</span>
+              <div>
+                <h3 id="encrypt-title">生成加密文件</h3>
+                <p>最多选择 3 张源图和 3 张目标图</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>源图像</span>
+                <input id="sourceFiles" type="file" accept="image/*" multiple>
+              </label>
+              <label class="field">
+                <span>目标图像</span>
+                <input id="targetFiles" type="file" accept="image/*" multiple>
+              </label>
+              <label class="field">
+                <span>载体图像</span>
+                <input id="carrierFile" type="file" accept="image/*">
+              </label>
+              <label class="field">
+                <span>A 用户密钥</span>
+                <input id="keyA" type="password" autocomplete="new-password" placeholder="用于恢复目标图">
+              </label>
+              <label class="field">
+                <span>B 用户密钥</span>
+                <input id="keyB" type="password" autocomplete="new-password" placeholder="用于恢复源图和目标图">
+              </label>
+            </div>
+
+            <div class="tool-actions">
+              <button class="button button-primary" id="generatePackage" type="button">生成 .ampcs.json</button>
+              <a class="button button-secondary is-disabled" id="downloadPackage" download>下载加密包</a>
+            </div>
+
+            <div class="status-line" id="encryptStatus">等待选择图片</div>
+            <pre class="package-preview" id="packagePreview" aria-label="加密结构预览">尚未生成结构</pre>
+          </section>
+
+          <section class="tool-card" aria-labelledby="decrypt-title">
+            <div class="tool-card-head">
+              <span class="tool-step">02</span>
+              <div>
+                <h3 id="decrypt-title">解密预览</h3>
+                <p>导入加密包并按角色恢复内容</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <label class="field field-wide">
+                <span>加密包</span>
+                <input id="packageFile" type="file" accept=".json,application/json">
+              </label>
+              <label class="field">
+                <span>角色</span>
+                <select id="decryptRole">
+                  <option value="userA">A 用户</option>
+                  <option value="userB">B 用户</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>解密密钥</span>
+                <input id="decryptKey" type="password" autocomplete="current-password" placeholder="输入对应角色密钥">
+              </label>
+            </div>
+
+            <div class="tool-actions">
+              <button class="button button-primary" id="decryptPackage" type="button">解密并预览</button>
+            </div>
+
+            <div class="status-line" id="decryptStatus">等待导入加密包</div>
+            <div class="decrypt-output" id="decryptOutput" aria-live="polite"></div>
+          </section>
         </div>
       </div>
     </section>
